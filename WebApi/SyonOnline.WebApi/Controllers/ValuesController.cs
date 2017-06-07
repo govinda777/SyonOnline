@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace SyonOnline.Controllers
+namespace SyonOnline.WebApi.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
@@ -13,6 +13,8 @@ namespace SyonOnline.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
+            var t = System.Net.HttpWebRequest.Create("");
+
             return new string[] { "value1", "value2" };
         }
 

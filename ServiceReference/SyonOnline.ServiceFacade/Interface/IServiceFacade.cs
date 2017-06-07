@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SyonOnline.ServiceFacade
+namespace SyonOnline.ServiceFacade.Interface
 {
-    public class Class1
+    public interface IServiceFacade
     {
-        public Class1()
-        {
-        }
     }
 }

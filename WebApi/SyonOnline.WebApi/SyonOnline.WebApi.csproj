@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <PreserveCompilationContext>true</PreserveCompilationContext>
-    <AssemblyName>SyonOnline</AssemblyName>
+    <AssemblyName>SyonOnline.WebApi</AssemblyName>
     <OutputType>Exe</OutputType>
-    <PackageId>SyonOnline</PackageId>
+    <PackageId>SyonOnline.WebApi</PackageId>
     <RuntimeFrameworkVersion>1.1.1</RuntimeFrameworkVersion>
     <PackageTargetFallback>$(PackageTargetFallback);dotnet5.6;portable-net45+win8</PackageTargetFallback>
   </PropertyGroup>

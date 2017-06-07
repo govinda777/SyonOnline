@@ -1,11 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard1.6</TargetFramework>
+    <TargetFramework>netstandard1.1</TargetFramework>
     <AssemblyName>SyonOnline.ServiceFacade</AssemblyName>
     <PackageId>SyonOnline.ServiceFacade</PackageId>
-    <NetStandardImplicitPackageVersion>1.6.0</NetStandardImplicitPackageVersion>
     <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
   </PropertyGroup>
-
+  <ItemGroup>
+    <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.0"/>
+    <PackageReference Include="System.Xml.XmlSerializer" Version="4.3.0"/>
+  </ItemGroup>
 </Project>
