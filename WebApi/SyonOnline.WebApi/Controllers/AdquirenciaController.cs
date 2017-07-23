@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using SyonOnline.WebApi.SyonOnline.WebApi.Model;
 using SyonOnline.WebApi.SyonOnline.WebApi.Moq.Adquirencia;
 using SyonOnline.ServiceReference.Adquirencia;
+using System.Collections.Concurrent;
 
 namespace SyonOnline.WebApi.Controllers
 {
@@ -15,27 +16,39 @@ namespace SyonOnline.WebApi.Controllers
 
         // GET api/values/password
         [HttpGet("{password}")]
-        public async Task<List<ValidationResult>> ValidateFull(string password)
+        public Task<List<ValidationResult>> ValidateFull(string password)
         {
             var moq = new AdquirenciaInfo();
+            var moqValues = moq.GetCollection();
             var service = new KomerciWcfClient();
+            var resultCollection = new ConcurrentBag<ValidationResult>();
             var result = new List<ValidationResult>();
 
-            Parallel.ForEach(moq.GetCollection(), async x => {
-                result.Add(await CallGetAuthorizedCreditAsync(service, x));
+            return Task.Run(() =>
+            {
+                Parallel.ForEach(moqValues, x => {
+                    var r = CallGetAuthorizedCreditAsync(service, x);
+                    result.Add(r);
+                });
+                
+                return result;
             });
-
-            return result;
-
         }
 
-        private async Task<ValidationResult> CallGetAuthorizedCreditAsync(KomerciWcfClient service, AdquirenciaInfo item)
+        private ValidationResult CallGetAuthorizedCreditAsync(KomerciWcfClient service, AdquirenciaInfo item)
         {
-            var result = await service.GetAuthorizedCreditAsync(item.Request);
+            var validationResult = new ValidationResult();
+            var msg = string.Empty;
+            var wsResult = service.GetAuthorizedCreditAsync(item.Request);
 
-            item.EqualsResult(result);
+            wsResult.Wait();
 
-            return new ValidationResult();
+            validationResult.TimeFinish = DateTime.Now;
+
+            validationResult.IsPass = item.EqualsResult(wsResult.Result,out msg);
+            validationResult.Message = msg;
+
+            return validationResult;
         }
     }
 }

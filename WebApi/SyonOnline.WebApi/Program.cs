@@ -28,7 +28,7 @@ namespace SyonOnline.WebApi
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
-                .UseUrls("http://0.0.0.0:8080")
+                //.UseUrls("http://0.0.0.0:8012")
                 .Build();
 
             host.Run();

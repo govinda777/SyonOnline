@@ -7,5 +7,26 @@ namespace SyonOnline.WebApi.SyonOnline.WebApi.Model
 {
     public class ValidationResult
     {
+        private DateTime _timeFinish;
+        public ValidationResult()
+        {
+            TimeStart = DateTime.Now;
+        }
+
+        public DateTime TimeStart { get; }
+        public DateTime TimeFinish {
+            get
+            {
+                return _timeFinish;
+            }
+            set
+            {
+                _timeFinish = value;
+                TotalTime = (_timeFinish - TimeStart).TotalSeconds;
+            }
+        }
+        public double TotalTime { get; private set; }
+        public string Message { get; set; }
+        public bool IsPass { get; set; }
     }
 }
