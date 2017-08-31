@@ -11,6 +11,14 @@
   <PropertyGroup>
     <UserSecretsId>aspnet-SyonOnline.WebApi-15f0622a-03f5-498f-8850-aa9af0ebbee2</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\css\mocha.css" />
+    <Content Include="wwwroot\js\async.js" />
+    <Content Include="wwwroot\js\chai.js" />
+    <Content Include="wwwroot\js\mocha.js" />
+    <Content Include="wwwroot\js\test\adqTest.js" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
