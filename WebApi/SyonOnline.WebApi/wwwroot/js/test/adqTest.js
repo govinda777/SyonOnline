@@ -11,7 +11,7 @@ describe('Validação ADQ', function () {
     $.ajax({
         type: "GET", //GET or POST or PUT or DELETE verb
         async: false,
-        url: 'http://localhost:8082/api/adquirencia/validateall', // Location of the service
+        url: '/api/adquirencia/validateall', // Location of the service
         crossDomain: true,
         success: function (data) {//On Successfull service call
             resultTest = data;
