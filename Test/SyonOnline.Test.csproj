@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ServiceReference\SyonOnline.ServiceReference.csproj" />
-    <ProjectReference Include="..\WebApi\SyonOnline.WebApi.csproj" />
   </ItemGroup>
 
   <ItemGroup>
