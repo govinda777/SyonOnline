@@ -13,7 +13,7 @@ namespace SyonOnline.WebApi.Moq.Adquirencia
 
         public AdquirenciaInfo()
         {
-            _fileName = @"SyonOnline.WebApi\Moq\Adquirencia\mockAdquirencia.json";
+            _fileName = @"Moq\Adquirencia\mockAdquirencia.json";
         }
 
         public AdquirenciaInfo(string fileName)

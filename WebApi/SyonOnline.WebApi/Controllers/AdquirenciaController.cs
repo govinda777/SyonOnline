@@ -11,20 +11,25 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace SyonOnline.WebApi.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     public class AdquirenciaController : Controller
     {
 
+        //[HttpGet]
+        //public IEnumerable<string> Get()
+        //{
+        //    return new string[] { "value1", "value2" };
+        //}
+
         // GET api/values/password
+        [HttpGet]
         public Task<List<ValidationResult>> ValidateFull()
         {
             var moq = new AdquirenciaInfo();
             var moqValues = moq.GetCollection();
             var service = new KomerciWcfClient();
-            var resultCollection = new ConcurrentBag<ValidationResult>();
             var result = new List<ValidationResult>();
-
+            
             return Task.Run(() =>
             {
                 Parallel.ForEach(moqValues, x => {
@@ -53,5 +58,6 @@ namespace SyonOnline.WebApi.Controllers
 
             return validationResult;
         }
+        
     }
 }

@@ -11,7 +11,7 @@ describe('Validação ADQ', function () {
     $.ajax({
         type: "GET", //GET or POST or PUT or DELETE verb
         async: false,
-        url: '/api/adquirencia/validateall', // Location of the service
+        url: '/api/adquirencia', // Location of the service
         crossDomain: true,
         success: function (data) {//On Successfull service call
             resultTest = data;
@@ -24,7 +24,7 @@ describe('Validação ADQ', function () {
     
     async.each(resultTest, function (item) {
         
-        describe('Test Case ' + item.order , function () {
+        describe('Test Case - ' + item.order , function () {
             
             it("isPass :" + item.isPass, function (done) {
 
