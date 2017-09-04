@@ -17,6 +17,7 @@ namespace SyonOnline.WebApi
                 .UseIISIntegration()
                 .UseStartup<Startup>()
                 .UseApplicationInsights()
+                .UseUrls("http://localhost:8080")
                 .Build();
 
             host.Run();
